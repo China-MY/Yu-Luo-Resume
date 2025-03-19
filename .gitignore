@@ -1,0 +1,5 @@
+
+node_modules/
+resume/.vuepress/.cache/
+resume/.vuepress/.temp/
+resume/.vuepress/dist/
