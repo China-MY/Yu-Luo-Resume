@@ -48,6 +48,10 @@ export default defineUserConfig({
             icon: "circle-info",
             link: "/#个人信息",
           },
+          {
+            text: "返回博客",
+            link: "https://blog.myxz.fun",
+          },
         ],
 
         // blog: {
