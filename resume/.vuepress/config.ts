@@ -33,9 +33,6 @@ export default defineUserConfig({
     // },
 
     locales: {
-      /**
-       * Chinese locale config
-       */
       "/": {
         author: {
           name: "骆裕",
@@ -54,10 +51,6 @@ export default defineUserConfig({
           },
         ],
 
-        // blog: {
-        //   description: "博士",
-        //   intro: "/en/#个人信息",
-        // },
       },
     },
 
