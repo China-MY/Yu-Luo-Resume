@@ -64,7 +64,7 @@ footer: false
 
 ## 教育经历
 
-<Experiences :items="experiences" />
+<Experiences :items="experiences"></Experiences>
 
 ## 实习经历
 
