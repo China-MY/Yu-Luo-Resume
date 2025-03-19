@@ -13,7 +13,7 @@ export default defineUserConfig({
 
   theme: hopeTheme({
     hostname: "https://resume.myxz.fun",
-    favicon: "/favicon.ico",
+    favicon: "favicon.ico",
 
     author: {
       name: "Yu Luo",

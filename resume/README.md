@@ -46,7 +46,7 @@ footer: false
 
     - ::envelope:: Outlook 邮箱: <mingyuxuezhang@outlook.com>
     - ::brands:google:: Gmail: <luoyu2004@gmail.com>
-    - <VPIcon icon="/qq.png"></VPIcon> QQ邮箱: <mingyuxuezhang@qq.com>
+    - <VPIcon icon="/QQmail.png"></VPIcon> QQ邮箱: <mingyuxuezhang@qq.com>
 
 [//]: # (- ::brands:google-scholar::: [谷歌学术]&#40;https://scholar.google.com/citations?user=-k8PWr8AAAAJ&hl=zh-CN&#41;)
 
