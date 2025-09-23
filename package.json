@@ -4,7 +4,7 @@
   "description": "yu luo resume website",
   "license": "MIT",
   "type": "module",
-  "homepage": "https://resume.myxz.fun",
+  "homepage": "https://resume.明裕.top",
   "scripts": {
     "resume:build": "vuepress-vite build resume",
     "resume:clean-dev": "vuepress-vite dev resume --clean-cache",

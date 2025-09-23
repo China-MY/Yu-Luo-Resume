@@ -12,12 +12,12 @@ export default defineUserConfig({
   },
 
   theme: hopeTheme({
-    hostname: "https://resume.myxz.fun",
+    hostname: "https://resume.明裕.top",
     favicon: "favicon.jpg",
 
     author: {
       name: "Yu Luo",
-      url: "https://resume.myxz.fun",
+      url: "https://resume.明裕.top",
     },
 
     sidebar: false,
@@ -36,7 +36,7 @@ export default defineUserConfig({
       "/": {
         author: {
           name: "骆裕",
-          url: "https://resume.myxz.fun",
+          url: "https://resume.明裕.top",
         },
         navbar: [
           "/",
@@ -48,7 +48,7 @@ export default defineUserConfig({
 
           {
             text: "返回博客",
-            link: "https://blog.myxz.fun",
+            link: "https://blog.明裕.top",
           },
         ],
 
