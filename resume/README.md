@@ -48,6 +48,11 @@ footer: false
       <span class="label">🟢 工作状态</span>
       <span class="value">自由职业者-全是兼职</span>
     </div>
+    <!-- 新增语音厅兼职信息 -->
+    <div class="profile-row">
+      <span class="label">🎙️ 语音厅兼职</span>
+      <span class="value">搬砖抖音：明易.淮安，欢迎各位来救济</span>
+    </div>
   </div>
 
   <div class="profile-card contact-info">
@@ -537,5 +542,3 @@ footer: false
   font-weight: 600;
 }
 </style>
-
-
