@@ -15,7 +15,6 @@ titles:
   - 运维技术研究者
   - OnePanda安全团队成员
   - 每天幻想暴富
-  - 此生唯一：小悦
 welcome: 👋 你好，我是
 name: 骆  裕
 footer: false
@@ -31,7 +30,7 @@ footer: false
     </div>
     <div class="profile-row">
       <span class="label">🇨🇳 政治面貌</span>
-      <span class="value">中共预备党员</span>
+      <span class="value">中共党员</span>
     </div>
     <div class="profile-row">
       <span class="label">🎂 出生日期</span>
@@ -47,7 +46,7 @@ footer: false
     </div>
     <div class="profile-row">
       <span class="label">🟢 工作状态</span>
-      <span class="value">在职 - 考虑机会</span>
+      <span class="value">自由职业者-全是兼职</span>
     </div>
   </div>
 
