@@ -116,54 +116,56 @@ footer: false
 </style>
 
 <script>
-// Carousel logic
-(function() {
-  const container = document.querySelector('.carousel-wrapper');
-  if (!container) return;
-  const slides = container.querySelector('.carousel-slides');
-  const slideEls = slides.querySelectorAll('.carousel-slide');
-  const prevBtn = container.querySelector('.carousel-prev');
-  const nextBtn = container.querySelector('.carousel-next');
-  const dotsContainer = container.querySelector('.carousel-dots');
-  let current = 0;
-  const total = slideEls.length;
+// Carousel logic – SSR guard: only run in browser
+if (typeof document !== 'undefined') {
+  (function() {
+    const container = document.querySelector('.carousel-wrapper');
+    if (!container) return;
+    const slides = container.querySelector('.carousel-slides');
+    const slideEls = slides.querySelectorAll('.carousel-slide');
+    const prevBtn = container.querySelector('.carousel-prev');
+    const nextBtn = container.querySelector('.carousel-next');
+    const dotsContainer = container.querySelector('.carousel-dots');
+    let current = 0;
+    const total = slideEls.length;
 
-  // Create dots
-  for (let i = 0; i < total; i++) {
-    const dot = document.createElement('span');
-    if (i === 0) dot.className = 'active';
-    dot.dataset.index = i;
-    dot.addEventListener('click', () => goTo(i));
-    dotsContainer.appendChild(dot);
-  }
+    // Create dots
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('span');
+      if (i === 0) dot.className = 'active';
+      dot.dataset.index = i;
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
 
-  const dots = dotsContainer.querySelectorAll('span');
+    const dots = dotsContainer.querySelectorAll('span');
 
-  function goTo(index) {
-    current = index;
-    slides.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach((d, i) => d.className = i === current ? 'active' : '');
-  }
+    function goTo(index) {
+      current = index;
+      slides.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach((d, i) => d.className = i === current ? 'active' : '');
+    }
 
-  prevBtn.addEventListener('click', () => {
-    goTo(current === 0 ? total - 1 : current - 1);
-  });
-  nextBtn.addEventListener('click', () => {
-    goTo(current === total - 1 ? 0 : current + 1);
-  });
+    prevBtn.addEventListener('click', () => {
+      goTo(current === 0 ? total - 1 : current - 1);
+    });
+    nextBtn.addEventListener('click', () => {
+      goTo(current === total - 1 ? 0 : current + 1);
+    });
 
-  // Auto play
-  let timer = setInterval(() => {
-    goTo(current === total - 1 ? 0 : current + 1);
-  }, 3500);
-
-  container.addEventListener('mouseenter', () => clearInterval(timer));
-  container.addEventListener('mouseleave', () => {
-    timer = setInterval(() => {
+    // Auto play
+    let timer = setInterval(() => {
       goTo(current === total - 1 ? 0 : current + 1);
     }, 3500);
-  });
-})();
+
+    container.addEventListener('mouseenter', () => clearInterval(timer));
+    container.addEventListener('mouseleave', () => {
+      timer = setInterval(() => {
+        goTo(current === total - 1 ? 0 : current + 1);
+      }, 3500);
+    });
+  })();
+}
 </script>
 
 ## 个人信息
