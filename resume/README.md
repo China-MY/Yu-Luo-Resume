@@ -2,16 +2,17 @@
 home: true
 portfolio: true
 icon: home
-title: "在线简历"
+title: "明裕.中国的个人网站"
 shortTitle: 主页
 avatarStyle:
   display: none
-bgImage: /images/7.jpg
+bgImage: /bg.jpg
 titles:
   - 时刻保持你的创新心，求知欲~
   - 和我一起去寻找最酷最无畏的人生~
   - 抱利他之心，行利他之事~
   - 软件开发工程师
+  - 安全渗透测试工程师
   - 运维技术研究者
   - OnePanda安全团队成员
   - 每天幻想暴富
