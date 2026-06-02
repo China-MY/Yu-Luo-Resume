@@ -20,6 +20,152 @@ name: 骆  裕
 footer: false
 ---
 
+## 🖼️ 个人风采
+
+<div class="carousel-container">
+  <div class="carousel-wrapper">
+    <div class="carousel-slides">
+      <div class="carousel-slide"><img src="/images/1.jpg" alt="风采1" /></div>
+      <div class="carousel-slide"><img src="/images/2.jpg" alt="风采2" /></div>
+      <div class="carousel-slide"><img src="/images/3.jpg" alt="风采3" /></div>
+      <div class="carousel-slide"><img src="/images/4.jpg" alt="风采4" /></div>
+      <div class="carousel-slide"><img src="/images/5.jpg" alt="风采5" /></div>
+      <div class="carousel-slide"><img src="/images/6.jpg" alt="风采6" /></div>
+      <div class="carousel-slide"><img src="/images/7.jpg" alt="风采7" /></div>
+      <div class="carousel-slide"><img src="/images/8.jpg" alt="风采8" /></div>
+      <div class="carousel-slide"><img src="/images/9.jpg" alt="风采9" /></div>
+      <div class="carousel-slide"><img src="/images/10.jpg" alt="风采10" /></div>
+    </div>
+    <button class="carousel-btn carousel-prev">❮</button>
+    <button class="carousel-btn carousel-next">❯</button>
+    <div class="carousel-dots"></div>
+  </div>
+</div>
+
+<style>
+.carousel-container {
+  max-width: 800px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  background: var(--vp-c-bg-soft);
+}
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
+  display: block;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s;
+  z-index: 2;
+  line-height: 1;
+}
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.7);
+}
+.carousel-prev { left: 0.8rem; }
+.carousel-next { right: 0.8rem; }
+.carousel-dots {
+  text-align: center;
+  padding: 0.6rem 0;
+  background: var(--vp-c-bg-soft);
+}
+.carousel-dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background: var(--vp-c-divider);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.carousel-dots span.active {
+  background: var(--vp-c-brand);
+}
+@media (max-width: 600px) {
+  .carousel-slide img { max-height: 300px; }
+}
+</style>
+
+<script>
+// Carousel logic
+(function() {
+  const container = document.querySelector('.carousel-wrapper');
+  if (!container) return;
+  const slides = container.querySelector('.carousel-slides');
+  const slideEls = slides.querySelectorAll('.carousel-slide');
+  const prevBtn = container.querySelector('.carousel-prev');
+  const nextBtn = container.querySelector('.carousel-next');
+  const dotsContainer = container.querySelector('.carousel-dots');
+  let current = 0;
+  const total = slideEls.length;
+
+  // Create dots
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('span');
+    if (i === 0) dot.className = 'active';
+    dot.dataset.index = i;
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  const dots = dotsContainer.querySelectorAll('span');
+
+  function goTo(index) {
+    current = index;
+    slides.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach((d, i) => d.className = i === current ? 'active' : '');
+  }
+
+  prevBtn.addEventListener('click', () => {
+    goTo(current === 0 ? total - 1 : current - 1);
+  });
+  nextBtn.addEventListener('click', () => {
+    goTo(current === total - 1 ? 0 : current + 1);
+  });
+
+  // Auto play
+  let timer = setInterval(() => {
+    goTo(current === total - 1 ? 0 : current + 1);
+  }, 3500);
+
+  container.addEventListener('mouseenter', () => clearInterval(timer));
+  container.addEventListener('mouseleave', () => {
+    timer = setInterval(() => {
+      goTo(current === total - 1 ? 0 : current + 1);
+    }, 3500);
+  });
+})();
+</script>
+
 ## 个人信息
 
 <div class="profile-wrapper">
@@ -66,7 +212,7 @@ footer: false
     </div>
     <div class="contact-row">
       <span class="icon">🐧</span>
-      <span class="text">mingyuxuezhang@qq.com</span>
+      <span class="text">1989590693（mingyuxuezhang@qq.com）</span>
     </div>
     <div class="hobbies-row">
       <span class="hobby-tag">🎵 音乐</span>
@@ -220,6 +366,7 @@ footer: false
       <li><strong>系统优化</strong>：优化大规模Nginx集群配置(20+节点)，通过负载均衡策略调整和缓存优化，实现QPS从5000提升至8000，错误率降低至0.1%以下。</li>
       <li><strong>工具研发</strong>：研发AI驱动的Java源代码审计工具，检测准确率达85%（已开源）；开发15+Python自动化运维脚本，实现日志分析、监控报警等工作100%自动化，每月节省120+人工小时。</li>
       <li><strong>应急响应</strong>：建立标准化应急响应流程，处理Windows/Linux系统安全事件200+次；基于1panel构建可视化运维平台，管理100+Linux服务器，运维效率提升60%。</li>
+      <li><strong>网络与数通能力</strong>：参加华为数通HCIA、HCIP培训，具备初级网络规划、路由交换、VLAN/OSPF/ACL配置、网络安全策略部署及故障排错能力，可协助完成中小型园区网与数据中心网络架构设计与运维。</li>
     </ul>
   </div>
 
@@ -299,7 +446,7 @@ footer: false
     - **系统开发**：开发微博更新监测系统，实现实时舆情监控。
     - **技术研究**：自主学习最新网络安全运维技术，保持技术前瞻性。
 
-- **淮安市高级职业技术学校** | 信息工程系 兼职教师 | 2025.09 - 2026.03
+- **淮安市高级职业技术学校** | 信息工程系 兼职教师 | 2025.09 - 2026.04
     - **课程教学**：主导两个23级班级（60+名学生）的Python程序设计课程教学，通过项目驱动式教学法，学生项目完成率达到95%以上。
     - **实战项目**：设计并实施"校园一卡通系统"实战教学项目，指导学生完成从需求分析到系统实现的完整开发流程，项目成果被3个校内部门采用。
     - **教学改革**：重构Python课程教学大纲，整合AI辅助教学工具，使课程内容更新率提升40%，学生满意度提高32%。
@@ -499,6 +646,8 @@ footer: false
     <ul>
       <li><strong>全栈开发</strong>：精通 Python/Vue3/FastAPI，驾驭微服务与 DevOps。</li>
       <li><strong>安全攻防</strong>：CNVD 证书持有者，深谙渗透测试与安全运维之道。</li>
+      <li><strong>国际视野</strong>：自主研究20+个国际安全技术论坛，系统掌握最新安全攻防技术，每月更新技术知识库。</li>
+      <li><strong>社区协作</strong>：高效利用GitHub Issues和Stack Overflow等开发者社区，成功解决50+个复杂安全运维问题，平均解决时间缩短60%。</li>
       <li><strong>AI 赋能</strong>：熟练运用 AIGC 工具提效，具备相关应用开发与教学经验。</li>
     </ul>
   </div>
