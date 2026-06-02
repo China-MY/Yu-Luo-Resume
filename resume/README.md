@@ -34,26 +34,26 @@ footer: false
     </div>
     <div class="profile-row">
       <span class="label">🎂 出生日期</span>
-      <span class="value">2004-09-30</span>
+      <span class="value">2004-09-30（21岁）</span>
     </div>
     <div class="profile-row">
       <span class="label">🏢 所属机构</span>
-      <span class="value">淮安裕见新声信息科技有限公司 / OnePanda安全团队</span>
+      <span class="value">南京盛网信息科技有限公司 / 淮安裕见新声信息科技有限公司 / OnePanda安全团队</span>
+    </div>
+    <div class="profile-row">
+      <span class="label">🌐 个人网站</span>
+      <span class="value"><a href="https://resume.明裕.top/" target="_blank">resume.明裕.top</a></span>
     </div>
     <div class="profile-row">
       <span class="label">💼 求职意向</span>
-      <span class="value">Python开发 / AIGC应用 / 安全运维</span>
+      <span class="value">渗透测试 / 安全运维 / Python开发 · AIGC应用</span>
     </div>
     <div class="profile-row">
       <span class="label">🟢 工作状态</span>
-      <span class="value">自由职业者-全是兼职</span>
-    </div>
-    <!-- 新增语音厅兼职信息 -->
-    <div class="profile-row">
-      <span class="label">🎙️ 语音厅兼职</span>
-      <span class="value">搬砖抖音：明易.淮安，欢迎各位来救济</span>
+      <span class="value">在职-考虑机会（自由职业 / 兼职）</span>
     </div>
   </div>
+
 
   <div class="profile-card contact-info">
     <div class="contact-row">
@@ -233,6 +233,20 @@ footer: false
       <li><strong>自动化挖掘</strong>：系统研究最新SRC漏洞挖掘技术，开发自动化漏洞扫描脚本，将常规漏洞检测时间从8小时缩短至30分钟，累计发现漏洞50+个。</li>
     </ul>
   </div>
+
+  <div class="skill-section">
+    <div class="skill-header">
+      <span class="icon">📊</span>
+      <h3>飞书多维表格搭建</h3>
+    </div>
+    <ul class="skill-list">
+      <li><strong>业务系统设计</strong>：设计并实施基于飞书多维表格的业务管理系统，覆盖销售、运营和项目管理等5+核心业务流程，实现数据集中化管理。</li>
+      <li><strong>定制化模板</strong>：开发15+定制化业务模板，包括客户管理、项目跟踪和库存监控等场景，提升团队协作效率40%。</li>
+      <li><strong>自动化工作流</strong>：建立自动化工作流机制，通过飞书机器人实现关键业务指标实时推送，减少人工数据整理时间30%。</li>
+      <li><strong>数字化培训</strong>：培训30+跨部门用户掌握飞书多维表格高级功能，推动全公司数字化办公转型。</li>
+      <li><strong>数据可视化</strong>：优化数据可视化看板，实现关键业务指标实时监控，管理层决策效率提升25%。</li>
+    </ul>
+  </div>
 </div>
 
 <style>
@@ -273,13 +287,19 @@ footer: false
 
 ## 工作经历
 
+- **南京盛网信息科技有限公司** | 技术渗透测试开发工程师 | 2026.03 - 至今
+    - **全链路安全服务交付**：全流程负责政务、国企、事业单位等政企客户的渗透测试、漏洞扫描、安全合规评估、重大活动网安保卫（重保）、应急响应等安全服务项目实施，覆盖需求对接、进场合规报备、方案定制、测试执行、漏洞复现验证、合规报告输出、整改方案落地指导到项目验收的全链路闭环交付，深度匹配等保2.0、数据安全法、政务数据安全管理等监管要求，保障客户政务系统、国企核心业务系统的安全稳定运行。
+    - **漏扫产品深度应用**：精通绿盟科技、长亭科技全系列漏洞扫描产品，深度适配政企客户政务云、国产化环境、分级保护等专属场景，可独立完成产品部署上线、合规策略配置、扫描规则优化、常态化扫描任务调度、误报精准过滤处置，具备丰富的政企集采项目漏扫产品交付、运维支撑与等保合规适配经验。
+    - **安全产品方案落地**：熟练掌握深信服全系列安全产品的政企场景化部署、配置调优与方案落地，覆盖边界安全、零信任访问、数据安全、云安全等政企核心安全建设场景，可精准匹配客户合规监管与业务安全需求，完成配套安全服务的落地交付。
+    - **定制化开发与培训**：负责政企安全服务配套的定制化软件开发、自动化测试工具与脚本编写，适配国产化软硬件环境，持续优化服务交付流程；同时承担网络安全技术课程体系搭建、内容研发与授课培训，面向政企客户开展等保合规、攻防技能、安全意识等定制化培训，完成多场政企单位内训与渠道技术赋能。
+
 - **淮安博越科技有限公司** | 技术 安全运维开发 | 2025.07 - 2026.02
     - **协助政务系统实施**：协助淮安市政务中心智能考勤系统实施项目，协助淮安机关事务局智慧食堂项目后端架构设计。
     - **安全运维流程建立**：建立公司网络安全运维标准化流程，提升团队协作效率。
     - **系统开发**：开发微博更新监测系统，实现实时舆情监控。
     - **技术研究**：自主学习最新网络安全运维技术，保持技术前瞻性。
 
-- **淮安市高级职业技术学校** | 信息工程系 兼职教师 | 2025.09 - 至今
+- **淮安市高级职业技术学校** | 信息工程系 兼职教师 | 2025.09 - 2026.03
     - **课程教学**：主导两个23级班级（60+名学生）的Python程序设计课程教学，通过项目驱动式教学法，学生项目完成率达到95%以上。
     - **实战项目**：设计并实施"校园一卡通系统"实战教学项目，指导学生完成从需求分析到系统实现的完整开发流程，项目成果被3个校内部门采用。
     - **教学改革**：重构Python课程教学大纲，整合AI辅助教学工具，使课程内容更新率提升40%，学生满意度提高32%。
@@ -329,6 +349,145 @@ footer: false
 .honors-content li strong {
   min-width: 80px;
   color: var(--vp-c-brand);
+}
+</style>
+
+## 相关证书
+
+<div class="cert-container">
+  <div class="cert-card">
+    <span class="cert-icon">📜</span>
+    <div class="cert-info">
+      <h3>NSACE高级网络信息安全工程师</h3>
+      <p>国家高级网络信息安全工程师职业技术证书</p>
+    </div>
+  </div>
+  <div class="cert-card">
+    <span class="cert-icon">🛡️</span>
+    <div class="cert-info">
+      <h3>NISP一级</h3>
+      <p>国家信息安全水平考试一级证书</p>
+    </div>
+  </div>
+  <div class="cert-card">
+    <span class="cert-icon">🔐</span>
+    <div class="cert-info">
+      <h3>CISP-PTE</h3>
+      <p>国家注册渗透测试工程师</p>
+    </div>
+  </div>
+  <div class="cert-card">
+    <span class="cert-icon">🏅</span>
+    <div class="cert-info">
+      <h3>CNVD高风险漏洞证书</h3>
+      <p>CNVD-2023-51993 未授权访问高危漏洞（评分7.5）</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.cert-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid var(--vp-c-divider);
+  transition: all 0.3s ease;
+}
+.cert-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px -8px rgba(0,0,0,0.12);
+  border-color: var(--vp-c-brand);
+}
+.cert-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+.cert-info h3 {
+  margin: 0 0 0.3rem 0 !important;
+  font-size: 1rem;
+}
+.cert-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+</style>
+
+## 项目经历
+
+<div class="project-container">
+  <div class="project-card">
+    <div class="project-header">
+      <span class="icon">🔐</span>
+      <h3>2026网安"宁锡行动"</h3>
+      <span class="project-time">2026.05</span>
+    </div>
+    <div class="project-body">
+      <p class="project-location">📍 江苏南京</p>
+      <ul>
+        <li>对无锡地级市资产进行漏洞挖掘，成功挖掘1个高危、2个中危、3个低危漏洞。</li>
+        <li>通过系统化的资产梳理与渗透测试流程，精准定位政务系统安全风险，圆满完成网安行动任务。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+.project-container {
+  margin-top: 1rem;
+}
+.project-card {
+  background: var(--vp-c-bg-soft);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--vp-c-divider);
+  margin-bottom: 1.5rem;
+}
+.project-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+  padding-bottom: 0.8rem;
+  gap: 0.8rem;
+}
+.project-header .icon {
+  font-size: 1.5rem;
+}
+.project-header h3 {
+  margin: 0 !important;
+  font-size: 1.2rem;
+  flex: 1;
+}
+.project-time {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  font-family: monospace;
+  background: var(--vp-c-bg-mute);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+.project-location {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+.project-body ul {
+  padding-left: 1.2rem;
+}
+.project-body li {
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
 }
 </style>
 
