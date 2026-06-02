@@ -6,7 +6,7 @@ title: "在线简历"
 shortTitle: 主页
 avatarStyle:
   display: none
-bgImage: /bg.jpg
+bgImage: /images/7.jpg
 titles:
   - 时刻保持你的创新心，求知欲~
   - 和我一起去寻找最酷最无畏的人生~
