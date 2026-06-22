@@ -1,7 +1,15 @@
 import { defineUserConfig } from "vuepress";
+import { viteBundler } from "@vuepress/bundler-vite";
 import { hopeTheme } from "vuepress-theme-hope";
 
 export default defineUserConfig({
+  bundler: viteBundler({
+    viteOptions: {
+      css: {
+        devSourcemap: false,
+      },
+    },
+  }),
   base: "/",
   locales: {
     "/": {

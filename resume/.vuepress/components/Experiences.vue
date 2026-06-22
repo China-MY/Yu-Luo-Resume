@@ -24,7 +24,7 @@ const experiences = computed(() => props.items ?? []);
   grid-template-columns: repeat(auto-fill, 300px);
   justify-content: center;
   justify-items: stretch;
-  gap: 16px;
+  gap: 20px;
   align-self: stretch;
 
   @media (max-width: hope-config.$tablet) {

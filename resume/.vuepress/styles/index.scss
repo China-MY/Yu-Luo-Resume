@@ -1,31 +1,179 @@
-.vp-portfolio {
-  // expand media icons
-  .vp-portfolio-medias .vp-portfolio-media {
-    width: 2.5rem;
-    height: 2.5rem;
+/* ===== Cyberpunk Global Styles ===== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-    img.icon {
-      width: 100%;
-      height: 100%;
-    }
-
-    .icon:not(img) {
-      font-size: 1.5rem;
-    }
-  }
+:root {
+  --cyber-cyan: #00f0ff;
+  --cyber-magenta: #ff00ff;
+  --cyber-gold: #ffd700;
+  --cyber-dark: #0a0a1a;
+  --cyber-card-bg: rgba(18, 18, 42, 0.85);
+  --cyber-border: rgba(0, 240, 255, 0.25);
+  --cyber-text: #e0e0ff;
+  --cyber-text-dim: #8888bb;
 }
 
+/* ===== Dark base ===== */
+html {
+  background-color: var(--cyber-dark) !important;
+}
+
+body {
+  font-family: 'Fira Code', 'Inter', monospace !important;
+  color: var(--cyber-text) !important;
+  background:
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    var(--cyber-dark) !important;
+  background-size: 40px 40px !important;
+  position: relative;
+}
+
+/* ===== Scanline overlay ===== */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--cyber-magenta);
+  color: #fff;
+}
+
+/* ===== Headings ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+h2 {
+  position: relative;
+  display: inline-block;
+  color: var(--cyber-cyan) !important;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
+  margin-bottom: 1.5rem !important;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-magenta), transparent);
+  box-shadow: 0 0 8px var(--cyber-cyan);
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--cyber-gold) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+a:hover {
+  color: var(--cyber-cyan) !important;
+  text-shadow: 0 0 8px var(--cyber-cyan);
+}
+
+/* ===== Portfolio welcome override ===== */
 .vp-portfolio-welcome,
 .vp-portfolio-title {
-  color: var(--vp-c-black);
+  color: var(--cyber-cyan) !important;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
 }
 
 .vp-portfolio-mask::after {
-  background-color: rgba(255, 255, 255);
-  opacity: 0.15;
+  background-color: rgba(0, 0, 0) !important;
+  opacity: 0.65 !important;
+}
 
-  [data-theme="dark"] & {
-    background-color: rgba(0, 0, 0);
-    opacity: 0.1;
-  }
+/* ===== Navbar ===== */
+.navbar {
+  backdrop-filter: blur(12px) !important;
+  background: rgba(10, 10, 26, 0.8) !important;
+  border-bottom: 1px solid var(--cyber-border) !important;
+}
+
+.navbar .nav-link {
+  color: var(--cyber-text) !important;
+}
+.navbar .nav-link:hover {
+  color: var(--cyber-cyan) !important;
+  text-shadow: 0 0 8px var(--cyber-cyan);
+}
+
+/* ===== Footer ===== */
+footer {
+  border-top: 1px solid var(--cyber-border) !important;
+  background: rgba(10, 10, 26, 0.9) !important;
+}
+
+/* ===== Fade-in scroll animation ===== */
+.cyber-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.cyber-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Glitch keyframes ===== */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 5px var(--cyber-cyan), 0 0 10px var(--cyber-cyan); }
+  50% { box-shadow: 0 0 10px var(--cyber-cyan), 0 0 20px var(--cyber-cyan), 0 0 30px var(--cyber-cyan); }
+}
+
+@keyframes scan-line {
+  0% { top: -5%; }
+  100% { top: 105%; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+  92% { opacity: 1; }
+  94% { opacity: 0.7; }
+  96% { opacity: 1; }
+}
+
+/* ===== Glitch text utility ===== */
+.cyber-glitch {
+  animation: glitch 0.3s ease-in-out infinite alternate;
+}
+
+/* ===== Cursor blink ===== */
+.cyber-cursor::after {
+  content: '|';
+  color: var(--cyber-cyan);
+  animation: blink-cursor 0.8s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

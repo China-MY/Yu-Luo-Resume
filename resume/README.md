@@ -53,8 +53,9 @@ footer: false
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-  background: var(--vp-c-bg-soft);
+  background: rgba(12, 12, 30, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15), inset 0 0 30px rgba(0, 0, 0, 0.4);
 }
 .carousel-slides {
   display: flex;
@@ -77,97 +78,49 @@ footer: false
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  color: #fff;
-  border: none;
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cyber-cyan, #00f0ff);
+  border: 1px solid rgba(0, 240, 255, 0.4);
   font-size: 1.5rem;
   padding: 0.6rem 0.8rem;
   cursor: pointer;
   border-radius: 8px;
-  transition: background 0.3s;
+  transition: all 0.3s;
   z-index: 2;
   line-height: 1;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
 }
 .carousel-btn:hover {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
 }
 .carousel-prev { left: 0.8rem; }
 .carousel-next { right: 0.8rem; }
 .carousel-dots {
   text-align: center;
   padding: 0.6rem 0;
-  background: var(--vp-c-bg-soft);
+  background: rgba(12, 12, 30, 0.6);
+  border-top: 1px solid rgba(0, 240, 255, 0.1);
 }
 .carousel-dots span {
   display: inline-block;
   width: 10px;
   height: 10px;
   margin: 0 5px;
-  background: var(--vp-c-divider);
+  background: rgba(0, 240, 255, 0.2);
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s;
+  border: 1px solid rgba(0, 240, 255, 0.2);
 }
 .carousel-dots span.active {
-  background: var(--vp-c-brand);
+  background: var(--cyber-cyan, #00f0ff);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
 }
 @media (max-width: 600px) {
   .carousel-slide img { max-height: 300px; }
 }
 </style>
-
-<script>
-// Carousel logic – SSR guard: only run in browser
-if (typeof document !== 'undefined') {
-  (function() {
-    const container = document.querySelector('.carousel-wrapper');
-    if (!container) return;
-    const slides = container.querySelector('.carousel-slides');
-    const slideEls = slides.querySelectorAll('.carousel-slide');
-    const prevBtn = container.querySelector('.carousel-prev');
-    const nextBtn = container.querySelector('.carousel-next');
-    const dotsContainer = container.querySelector('.carousel-dots');
-    let current = 0;
-    const total = slideEls.length;
-
-    // Create dots
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('span');
-      if (i === 0) dot.className = 'active';
-      dot.dataset.index = i;
-      dot.addEventListener('click', () => goTo(i));
-      dotsContainer.appendChild(dot);
-    }
-
-    const dots = dotsContainer.querySelectorAll('span');
-
-    function goTo(index) {
-      current = index;
-      slides.style.transform = 'translateX(-' + (current * 100) + '%)';
-      dots.forEach((d, i) => d.className = i === current ? 'active' : '');
-    }
-
-    prevBtn.addEventListener('click', () => {
-      goTo(current === 0 ? total - 1 : current - 1);
-    });
-    nextBtn.addEventListener('click', () => {
-      goTo(current === total - 1 ? 0 : current + 1);
-    });
-
-    // Auto play
-    let timer = setInterval(() => {
-      goTo(current === total - 1 ? 0 : current + 1);
-    }, 3500);
-
-    container.addEventListener('mouseenter', () => clearInterval(timer));
-    container.addEventListener('mouseleave', () => {
-      timer = setInterval(() => {
-        goTo(current === total - 1 ? 0 : current + 1);
-      }, 3500);
-    });
-  })();
-}
-</script>
 
 ## 个人信息
 
@@ -235,10 +188,17 @@ if (typeof document !== 'undefined') {
 .profile-card {
   flex: 1;
   min-width: 300px;
-  background: var(--vp-c-bg-soft);
+  background: rgba(12, 12, 30, 0.85);
+  backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.08);
+  transition: all 0.4s ease;
+}
+.profile-card:hover {
+  border-color: rgba(255, 0, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.15), 0 0 10px rgba(0, 240, 255, 0.1);
 }
 .profile-row, .contact-row {
   display: flex;
@@ -249,15 +209,18 @@ if (typeof document !== 'undefined') {
 .profile-row .label {
   width: 100px;
   font-weight: 600;
-  color: var(--vp-c-text-2);
+  color: var(--cyber-text-dim, #8888bb);
 }
 .profile-row .value {
-  color: var(--vp-c-text-1);
+  color: var(--cyber-text, #e0e0ff);
   flex: 1;
 }
 .contact-row .icon {
   margin-right: 0.8rem;
   font-size: 1.1rem;
+}
+.contact-row .text {
+  color: var(--cyber-text, #e0e0ff);
 }
 .hobbies-row {
   margin-top: 1rem;
@@ -265,11 +228,12 @@ if (typeof document !== 'undefined') {
   gap: 0.5rem;
 }
 .hobby-tag {
-  background: var(--vp-c-bg-mute);
-  padding: 0.2rem 0.6rem;
+  background: rgba(0, 240, 255, 0.1);
+  padding: 0.25rem 0.7rem;
   border-radius: 4px;
   font-size: 0.85rem;
-  color: var(--vp-c-text-2);
+  color: var(--cyber-cyan, #00f0ff);
+  border: 1px solid rgba(0, 240, 255, 0.2);
 }
 </style>
 
@@ -297,12 +261,14 @@ if (typeof document !== 'undefined') {
 <style>
 .edu-timeline {
   margin-top: 1rem;
-  border-left: 2px solid var(--vp-c-divider);
+  border-left: 2px solid rgba(0, 240, 255, 0.4);
   padding-left: 1.5rem;
+  box-shadow: -2px 0 8px rgba(0, 240, 255, 0.1);
 }
 .edu-item {
   position: relative;
   margin-bottom: 2rem;
+  transition: all 0.3s ease;
 }
 .edu-item::before {
   content: "";
@@ -311,15 +277,22 @@ if (typeof document !== 'undefined') {
   top: 0.4rem;
   width: 0.8rem;
   height: 0.8rem;
-  background: var(--vp-c-brand);
+  background: var(--cyber-cyan, #00f0ff);
   border-radius: 50%;
-  border: 2px solid var(--vp-c-bg);
+  border: 2px solid rgba(10, 10, 26, 0.9);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+}
+.edu-item:hover::before {
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.8), 0 0 25px rgba(255, 0, 255, 0.4);
+  background: var(--cyber-magenta, #ff00ff);
 }
 .edu-year {
   font-size: 0.9rem;
-  color: var(--vp-c-text-2);
+  color: var(--cyber-cyan, #00f0ff);
   margin-bottom: 0.3rem;
-  font-family: monospace;
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
 }
 .edu-content h3 {
   margin: 0 0 0.5rem 0 !important;
@@ -327,14 +300,17 @@ if (typeof document !== 'undefined') {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 0.03em;
 }
 .edu-major {
-  color: var(--vp-c-brand);
+  color: var(--cyber-magenta, #ff00ff);
   font-weight: 600;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.3);
 }
 .edu-desc {
-  color: var(--vp-c-text-2);
+  color: var(--cyber-text-dim, #8888bb);
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -401,17 +377,28 @@ if (typeof document !== 'undefined') {
 
 <style>
 .skill-section {
-  background: var(--vp-c-bg-soft);
+  background: rgba(12, 12, 30, 0.85);
+  backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-left: 3px solid var(--cyber-cyan, #00f0ff);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.skill-section:hover {
+  border-color: rgba(255, 0, 255, 0.3);
+  border-left-color: var(--cyber-magenta, #ff00ff);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.1), 0 0 10px rgba(0, 240, 255, 0.08);
 }
 .skill-header {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
   padding-bottom: 0.8rem;
 }
 .skill-header .icon {
@@ -421,17 +408,20 @@ if (typeof document !== 'undefined') {
 .skill-header h3 {
   margin: 0 !important;
   font-size: 1.2rem;
+  font-family: 'Orbitron', sans-serif !important;
+  color: var(--cyber-cyan, #00f0ff) !important;
+  letter-spacing: 0.05em;
 }
 .skill-list {
   padding-left: 1.2rem;
 }
 .skill-list li {
   margin-bottom: 0.8rem;
-  color: var(--vp-c-text-2);
+  color: var(--cyber-text-dim, #8888bb);
   line-height: 1.6;
 }
 .skill-list strong {
-  color: var(--vp-c-brand);
+  color: var(--cyber-gold, #ffd700);
 }
 </style>
 
@@ -455,6 +445,126 @@ if (typeof document !== 'undefined') {
     - **教学改革**：重构Python课程教学大纲，整合AI辅助教学工具，使课程内容更新率提升40%，学生满意度提高32%。
     - **AI专项训练**：开发AI提示词工程专项训练模块，通过10+个实际案例教学，使85%的学生能够独立编写专业级AI提示词。
     - **效率提升**：引入代码自动评审系统，将作业批改效率提升60%，同时为学生提供实时反馈，平均代码质量提升25%。
+
+<style>
+.work-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+.work-item {
+  background: rgba(12, 12, 30, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-left: 3px solid var(--cyber-magenta, #ff00ff);
+  transition: all 0.4s ease;
+}
+.work-item:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  border-left-color: var(--cyber-cyan, #00f0ff);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.work-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.05rem;
+  color: var(--cyber-gold, #ffd700);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  letter-spacing: 0.03em;
+}
+.work-title strong {
+  color: var(--cyber-gold, #ffd700);
+}
+.work-detail {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.work-detail li {
+  color: var(--cyber-text-dim, #8888bb);
+  margin-bottom: 0.6rem;
+  line-height: 1.7;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(0, 240, 255, 0.1);
+}
+.work-detail li strong {
+  color: var(--cyber-cyan, #00f0ff);
+}
+</style>
+
+<script>
+if (typeof document !== 'undefined') {
+  (function() {
+    // Wrap work experience list items in cyberpunk cards
+    const h2 = document.querySelector('h2');
+    const allH2 = document.querySelectorAll('h2');
+    let workH2 = null;
+    for (const h of allH2) {
+      if (h.textContent.includes('工作经历')) {
+        workH2 = h;
+        break;
+      }
+    }
+    if (!workH2) return;
+    let el = workH2.nextElementSibling;
+    const items = [];
+    while (el && el.tagName !== 'H2') {
+      if (el.tagName === 'UL' || el.tagName === 'LI') {
+        items.push(el);
+        const next = el.nextElementSibling;
+        el.remove();
+        el = next;
+      } else {
+        el = el.nextElementSibling;
+      }
+    }
+    if (items.length === 0) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'work-list';
+
+    // Group top-level list items as cards
+    items.forEach(ul => {
+      const lis = ul.querySelectorAll('li');
+      lis.forEach(li => {
+        const card = document.createElement('div');
+        card.className = 'work-item';
+        // First <strong> in top-level li is the title
+        const titleStrong = li.querySelector('strong');
+        const subLis = li.querySelectorAll('li');
+        if (titleStrong) {
+          const titleDiv = document.createElement('div');
+          titleDiv.className = 'work-title';
+          titleDiv.innerHTML = li.childNodes[0].textContent + (li.childNodes[1] ? li.childNodes[1].textContent : '');
+          card.appendChild(titleDiv);
+        }
+        if (subLis.length > 0) {
+          const subUl = document.createElement('ul');
+          subUl.className = 'work-detail';
+          subLis.forEach(sub => {
+            const subLi = document.createElement('li');
+            subLi.innerHTML = sub.innerHTML;
+            subUl.appendChild(subLi);
+          });
+          card.appendChild(subUl);
+        } else {
+          const p = document.createElement('p');
+          p.innerHTML = li.innerHTML;
+          p.style.cssText = 'color: var(--cyber-text-dim, #8888bb); line-height: 1.7;';
+          card.appendChild(p);
+        }
+        wrapper.appendChild(card);
+      });
+    });
+
+    workH2.parentNode.insertBefore(wrapper, workH2.nextElementSibling);
+  })();
+}
+</script>
 
 ## 代表荣誉及奖项
 
@@ -482,8 +592,11 @@ if (typeof document !== 'undefined') {
 .honors-content h3 {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
   padding-bottom: 0.5rem;
+  font-family: 'Orbitron', sans-serif !important;
+  color: var(--cyber-gold, #ffd700) !important;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 .honors-content ul {
   list-style: none;
@@ -495,10 +608,19 @@ if (typeof document !== 'undefined') {
   margin-bottom: 0.8rem;
   flex-wrap: wrap;
   gap: 0.5rem;
+  background: rgba(12, 12, 30, 0.6);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 240, 255, 0.08);
+  transition: all 0.3s ease;
+}
+.honors-content li:hover {
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.08);
 }
 .honors-content li strong {
   min-width: 80px;
-  color: var(--vp-c-brand);
+  color: var(--cyber-cyan, #00f0ff);
 }
 </style>
 
@@ -546,29 +668,65 @@ if (typeof document !== 'undefined') {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: var(--vp-c-bg-soft);
+  background: rgba(12, 12, 30, 0.85);
+  backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 1.2rem 1.5rem;
-  border: 1px solid var(--vp-c-divider);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    rgba(0, 240, 255, 0.05),
+    transparent 30%,
+    rgba(255, 0, 255, 0.05),
+    transparent 60%
+  );
+  animation: rotate-shine 6s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.cert-card:hover::before {
+  opacity: 1;
 }
 .cert-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px -8px rgba(0,0,0,0.12);
-  border-color: var(--vp-c-brand);
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), 0 0 40px rgba(255, 0, 255, 0.08);
+  border-color: rgba(255, 0, 255, 0.4);
+}
+@keyframes rotate-shine {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 .cert-icon {
   font-size: 2rem;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 .cert-info h3 {
   margin: 0 0 0.3rem 0 !important;
   font-size: 1rem;
+  position: relative;
+  z-index: 1;
+  font-family: 'Fira Code', monospace !important;
+  color: var(--cyber-cyan, #00f0ff) !important;
 }
 .cert-info p {
   margin: 0;
   font-size: 0.85rem;
-  color: var(--vp-c-text-2);
+  color: var(--cyber-text-dim, #8888bb);
+  position: relative;
+  z-index: 1;
 }
 </style>
 
@@ -596,17 +754,23 @@ if (typeof document !== 'undefined') {
   margin-top: 1rem;
 }
 .project-card {
-  background: var(--vp-c-bg-soft);
+  background: rgba(12, 12, 30, 0.85);
+  backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid rgba(0, 240, 255, 0.2);
   margin-bottom: 1.5rem;
+  transition: all 0.4s ease;
+}
+.project-card:hover {
+  border-color: rgba(255, 0, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.12), 0 0 8px rgba(0, 240, 255, 0.1);
 }
 .project-header {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
   padding-bottom: 0.8rem;
   gap: 0.8rem;
 }
@@ -617,17 +781,21 @@ if (typeof document !== 'undefined') {
   margin: 0 !important;
   font-size: 1.2rem;
   flex: 1;
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 0.03em;
+  color: var(--cyber-gold, #ffd700) !important;
 }
 .project-time {
   font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-  font-family: monospace;
-  background: var(--vp-c-bg-mute);
+  color: var(--cyber-cyan, #00f0ff);
+  font-family: 'Fira Code', monospace;
+  background: rgba(0, 240, 255, 0.1);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
 }
 .project-location {
-  color: var(--vp-c-text-2);
+  color: var(--cyber-text-dim, #8888bb);
   font-size: 0.9rem;
   margin-bottom: 0.8rem;
 }
@@ -636,7 +804,7 @@ if (typeof document !== 'undefined') {
 }
 .project-body li {
   margin-bottom: 0.5rem;
-  color: var(--vp-c-text-2);
+  color: var(--cyber-text-dim, #8888bb);
   line-height: 1.6;
 }
 </style>
@@ -680,24 +848,43 @@ if (typeof document !== 'undefined') {
   margin-top: 1rem;
 }
 .eval-card {
-  background-color: var(--vp-c-bg-soft);
+  background: rgba(12, 12, 30, 0.85);
+  backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.eval-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyber-cyan, #00f0ff), var(--cyber-magenta, #ff00ff));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.eval-card:hover::after {
+  opacity: 1;
 }
 .eval-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
-  border-color: var(--vp-c-brand);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.15), 0 0 50px rgba(255, 0, 255, 0.08);
+  border-color: rgba(255, 0, 255, 0.3);
 }
 .eval-card h3 {
   margin-top: 0 !important;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
   padding-bottom: 0.8rem;
   margin-bottom: 1rem;
   font-size: 1.2rem;
-  color: var(--vp-c-text-1);
+  font-family: 'Orbitron', sans-serif !important;
+  color: var(--cyber-cyan, #00f0ff) !important;
+  letter-spacing: 0.05em;
 }
 .eval-card ul {
   list-style: none;
@@ -751,56 +938,80 @@ if (typeof document !== 'undefined') {
     </div>
   </a>
 
-  <div class="publish-card">
+  <a class="publish-card" href="https://github.com/China-MY/" target="_blank">
     <div class="card-header">
-      <span class="icon">💡</span>
-      <h3>开源贡献</h3>
+      <span class="icon">🐙</span>
+      <h3>GitHub</h3>
     </div>
     <div class="card-body">
-      <p class="platform"><strong>GitHub / 社区</strong></p>
-      <p class="desc">积极参与开源共建</p>
+      <p class="platform"><strong>China-MY</strong></p>
+      <p class="desc">开源项目与代码仓库</p>
       <ul class="stats">
-        <li>🐙 维护个人技术项目</li>
-        <li>🤝 贡献代码与文档</li>
-        <li>🌍 助力开发者成长</li>
+        <li>🔧 Python / 安全工具开发</li>
+        <li>🤝 开源共建 & 技术分享</li>
+        <li>⭐ 欢迎 Star ⭐</li>
       </ul>
     </div>
-  </div>
+  </a>
 </div>
 
 <style>
 .publish-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
   margin-top: 1rem;
+}
+
+.publish-container .publish-card {
+  flex: 1 1 280px;
+  max-width: 360px;
 }
 
 .publish-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--vp-c-bg-soft);
+  background: rgba(12, 12, 30, 0.85);
+  backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  transition: all 0.4s ease;
   text-decoration: none !important;
   color: inherit !important;
   height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.publish-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-cyan, #00f0ff), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.publish-card:hover::before {
+  opacity: 1;
 }
 
 .publish-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
-  border-color: var(--vp-c-brand);
-  background-color: var(--vp-c-bg-soft-up);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.12), 0 0 40px rgba(255, 0, 255, 0.06);
+  border-color: rgba(255, 0, 255, 0.3);
 }
 
 .card-header {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
   padding-bottom: 0.8rem;
 }
 
@@ -812,9 +1023,11 @@ if (typeof document !== 'undefined') {
 .card-header h3 {
   margin: 0 !important;
   font-size: 1.2rem;
-  color: var(--vp-c-text-1);
+  font-family: 'Orbitron', sans-serif !important;
+  color: var(--cyber-cyan, #00f0ff) !important;
   border: none !important;
   padding: 0 !important;
+  letter-spacing: 0.05em;
 }
 
 .card-body {
@@ -823,13 +1036,14 @@ if (typeof document !== 'undefined') {
 
 .platform {
   font-size: 1.1rem;
-  color: var(--vp-c-brand);
+  color: var(--cyber-magenta, #ff00ff);
   margin-bottom: 0.2rem;
+  font-weight: 600;
 }
 
 .desc {
   font-size: 0.9rem;
-  color: var(--vp-c-text-2);
+  color: var(--cyber-text-dim, #8888bb);
   margin-bottom: 1rem;
 }
 
@@ -841,7 +1055,7 @@ if (typeof document !== 'undefined') {
 
 .stats li {
   font-size: 0.9rem;
-  color: var(--vp-c-text-2);
+  color: var(--cyber-text-dim, #8888bb);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -849,7 +1063,7 @@ if (typeof document !== 'undefined') {
 }
 
 .stats li strong {
-  color: var(--vp-c-text-1);
+  color: var(--cyber-gold, #ffd700);
   font-weight: 600;
 }
 </style>
